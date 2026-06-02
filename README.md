@@ -150,11 +150,10 @@ LLM 排盘会犯错。紫微斗数排盘涉及：
 
 | 平台 | 链接 |
 |------|------|
-| 🎵 抖音 | [与你同学 learn with you](https://www.douyin.com/user/learnwithyou) |
-| 📕 小红书 | [与你同学 learn with you](https://www.xiaohongshu.com/user/profile/learnwithyou) |
-| 📺 B站 | [与你同学 learnwithyou](https://space.bilibili.com/) |
-| ▶️ YouTube | [与你同学 Learn With You](https://www.youtube.com/@learnwithyou) |
+| 🎵 抖音 | 搜「与你同学 learn with you」（抖音号：learnwithyou） |
+| 📕 小红书 | 搜「与你同学 learn with you」（小红书号：learnwithyou） |
 | ✖️ X (Twitter) | [@learnwithyou_](https://x.com/learnwithyou_) |
+| 📱 视频号 | 搜「与你同学 learnwithyou」 |
 | 💬 公众号 | 微信搜「与你同学 learnwithyou」 |
 
 ---
