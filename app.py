@@ -120,11 +120,11 @@ def build_dynamic_reading(chart: dict, birth_year: int) -> dict:
                 f"{star_sentence(soul['major_stars'] if soul else [])}<br><br>"
                 "명궁은 타고난 반응 방식과 인생을 해석하는 기본 렌즈입니다. "
                 "<span class='good'>강점은 가장 먼저 반복되는 선택 패턴에서 드러납니다.</span> "
-                "<span class='warn'>다만 실제 정확도는 현재 직업, 가족 배경, 최근 사건으로 보정해야 합니다.</span>"
+                "<span class='warn'>다만 이 해석은 보장된 결론이 아니라 현재 직업, 가족 배경, 최근 사건으로 보정해야 하는 1차 판단입니다.</span>"
             ),
             "probabilities": [
                 {"label": "초기 신뢰도", "pct": 70},
-                {"label": "보정 후 목표", "pct": 86},
+                {"label": "보정 참고치", "pct": 82},
             ],
         },
         {
@@ -294,7 +294,7 @@ def render_form(error: str = "") -> bytes:
 <header>
   <div class="eyebrow">자미두수 명반 생성기</div>
   <h1>명리 마스터</h1>
-  <div class="sub">생년월일시를 입력하면 Python 계산기로 12궁과 사화를 산출하고, 한국어 명반 리포트를 즉시 생성합니다.</div>
+  <div class="sub">생년월일시를 입력하면 Python 계산기로 12궁과 사화를 산출하고, 규칙 기반 한국어 명반 리포트를 즉시 생성합니다. 현재 웹앱은 외부 AI 모델을 호출하지 않습니다.</div>
 </header>
 {error_html}
 <form method="post" action="/generate">

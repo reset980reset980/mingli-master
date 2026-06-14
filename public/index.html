@@ -407,11 +407,25 @@
     letter-spacing: 1px;
   }
 
-  .cal-questions { display: flex; flex-direction: column; gap: 16px; }
+  .cal-questions { display: flex; flex-direction: column; gap: 18px; }
   .cal-q { display: flex; gap: 16px; align-items: flex-start; }
   .cal-num { font-size: 18px; color: rgba(200,169,110,0.3); font-weight: 700; flex-shrink: 0; width: 42px; font-family: 'Gowun Batang', serif; }
+  .cal-field { flex: 1; min-width: 0; }
   .cal-text { font-size: 14px; color: var(--ivory); line-height: 1.8; padding-top: 2px; }
   .cal-text span { font-size: 11px; color: var(--ivory-dim); display: block; margin-top: 4px; }
+  .cal-answer {
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid rgba(200,169,110,0.18);
+    background: rgba(10,10,15,0.72);
+    color: var(--ivory);
+    padding: 10px 12px;
+    resize: vertical;
+    min-height: 82px;
+    font: inherit;
+    line-height: 1.7;
+  }
+  .cal-answer::placeholder { color: rgba(184,170,144,0.55); }
 
   .footer {
     text-align: center;
@@ -629,9 +643,9 @@
                     <span class="prob-pct">70%</span>
                 </div>
 <div class="prob-bar">
-                    <span class="prob-label">보정 후 목표</span>
-                    <div class="prob-track"><div class="prob-fill" style="width:86%"></div></div>
-                    <span class="prob-pct">86%</span>
+                    <span class="prob-label">보정 참고치</span>
+                    <div class="prob-track"><div class="prob-fill" style="width:82%"></div></div>
+                    <span class="prob-pct">82%</span>
                 </div>
 </div>
     </div>
@@ -689,23 +703,35 @@
 
   <div class="calibration">
     <div class="cal-title">보정 질문</div>
-    <div class="cal-desc">초기 해석 정확도는 보통 65-75%입니다. 아래 질문에 답하면 85% 이상으로 보정할 수 있습니다.</div>
+    <div class="cal-desc">아래 답변은 해석을 보정하기 위한 추가 근거입니다. 입력한다고 결과가 보장되지는 않으며, 실제 경험과 대화로 판단을 조정합니다.</div>
     <div class="cal-questions">
       <div class="cal-q">
         <div class="cal-num">하나</div>
-        <div class="cal-text">현재 하는 일은 기술, 운영, 투자, 창작 중 어디에 가장 가깝나요?<span>관록궁 해석을 보정합니다.</span></div>
+        <div class="cal-field">
+          <div class="cal-text">현재 하는 일은 기술, 운영, 투자, 창작 중 어디에 가장 가깝나요?<span>관록궁 해석을 보정합니다.</span></div>
+          <textarea class="cal-answer" name="calibration_1" rows="3" placeholder="답변을 적어 두세요. 이 내용은 재해석할 때 보정 근거로 사용합니다."></textarea>
+        </div>
       </div>
 <div class="cal-q">
         <div class="cal-num">둘</div>
-        <div class="cal-text">최근 1-2년 사이 가장 큰 전환은 무엇이었나요?<span>대운과 유년 흐름을 맞춥니다.</span></div>
+        <div class="cal-field">
+          <div class="cal-text">최근 1-2년 사이 가장 큰 전환은 무엇이었나요?<span>대운과 유년 흐름을 맞춥니다.</span></div>
+          <textarea class="cal-answer" name="calibration_2" rows="3" placeholder="답변을 적어 두세요. 이 내용은 재해석할 때 보정 근거로 사용합니다."></textarea>
+        </div>
       </div>
 <div class="cal-q">
         <div class="cal-num">셋</div>
-        <div class="cal-text">관계에서 가장 자주 반복되는 갈등은 무엇인가요?<span>부부궁 해석을 보정합니다.</span></div>
+        <div class="cal-field">
+          <div class="cal-text">관계에서 가장 자주 반복되는 갈등은 무엇인가요?<span>부부궁 해석을 보정합니다.</span></div>
+          <textarea class="cal-answer" name="calibration_3" rows="3" placeholder="답변을 적어 두세요. 이 내용은 재해석할 때 보정 근거로 사용합니다."></textarea>
+        </div>
       </div>
 <div class="cal-q">
         <div class="cal-num">넷</div>
-        <div class="cal-text">돈을 벌 때 확장과 안정 중 어느 쪽을 더 선호하나요?<span>재백궁의 활용 방식을 확인합니다.</span></div>
+        <div class="cal-field">
+          <div class="cal-text">돈을 벌 때 확장과 안정 중 어느 쪽을 더 선호하나요?<span>재백궁의 활용 방식을 확인합니다.</span></div>
+          <textarea class="cal-answer" name="calibration_4" rows="3" placeholder="답변을 적어 두세요. 이 내용은 재해석할 때 보정 근거로 사용합니다."></textarea>
+        </div>
       </div>
 
     </div>

@@ -194,7 +194,10 @@ def build_calibration(questions):
         hint = f'<span>{question["hint"]}</span>' if question.get('hint') else ''
         html += f'''<div class="cal-q">
         <div class="cal-num">{num}</div>
-        <div class="cal-text">{question['text']}{hint}</div>
+        <div class="cal-field">
+          <div class="cal-text">{question['text']}{hint}</div>
+          <textarea class="cal-answer" name="calibration_{index + 1}" rows="3" placeholder="답변을 적어 두세요. 이 내용은 재해석할 때 보정 근거로 사용합니다."></textarea>
+        </div>
       </div>\n'''
     return html
 

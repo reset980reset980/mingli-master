@@ -106,7 +106,7 @@ HTML 생성기는 다음 형식의 `reading.json`을 읽습니다.
       "body": "해석 본문. <strong>강조</strong> <em>금색 강조</em> <span class='warn'>주의</span> <span class='good'>강점</span> 사용 가능",
       "probabilities": [
         {"label": "초기 신뢰도", "pct": 70},
-        {"label": "보정 후 목표", "pct": 85}
+        {"label": "보정 참고치", "pct": 82}
       ]
     }
   ],
@@ -177,7 +177,7 @@ python3 scripts/generate_html.py \
 
 ## 보정 질문
 
-초기 해석은 보통 65-75% 정도의 정확도를 목표로 합니다. 사용자 답변을 받아 85% 이상으로 보정합니다.
+초기 해석은 보통 65-75% 정도의 참고 신뢰도를 목표로 합니다. 사용자 답변은 해석을 보정하는 근거가 되지만 결과를 보장하지 않습니다.
 
 질문 후보:
 
