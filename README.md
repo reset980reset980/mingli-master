@@ -1,174 +1,178 @@
-# 命理解读师.skill
+# 명리 마스터.skill
 
 ![](assets/musk-mingpan.jpg)
 
-> *「Elon Musk 的命盘示例」*
+> *엘론 머스크 명반 예시*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-green)](https://agentskills.io)
 [![Python](https://img.shields.io/badge/Python-3.8+-blue)](https://python.org)
 [![iztro-py](https://img.shields.io/badge/Powered%20by-iztro--py-C8A96E)](https://github.com/spyfree/iztro-py)
 
-**输入生辰信息，生成一张精美的紫微斗数可视化命盘解读报告。**
+**생년월일시를 입력하면 자미두수 명반을 계산하고, 한국어 해석 리포트 HTML을 생성합니다.**
 
-融合紫微三合派、中州派和手相互证的方法论。Python 精确排盘，AI 生成有温度的解读，HTML 暗色星空主题可视化输出。
+자미삼합, 중주파 화기 추적, 손금 교차 검증 관점을 함께 사용합니다. 계산은 Python과 `iztro-py`가 담당하고, 해석은 AI가 따뜻하고 명확한 한국어 문장으로 정리합니다.
 
-[效果示例](#效果示例) · [安装](#安装) · [使用](#使用) · [工作原理](#工作原理) · [仓库结构](#仓库结构)
-
----
-
-## 效果示例
-
-输入生辰信息后，命理解读师自动排盘并生成可视化命盘。以马斯克的命盘为例：
-
-> **「天机太阴坐命寅宫——这个组合的核心词是：用脑子改变世界。」**
->
-> 天机是谋士星，思维极活跃，永远在想「下一步怎么办」。太阴是月亮星，内省、直觉强。两颗星叠在一起，造就了一个永远在思考、永远在推翻自己的人。
->
-> 寅宫的天机太阴有个特点：不满足现状。不是在现有框架里优化，是直接质疑框架本身该不该存在。
-
-不仅是生辰解读，每张命盘都包含：
-
-- **命盘底色** — 先天禀赋与性格核心
-- **事业财运** — 官禄宫 + 财帛宫格局
-- **感情婚姻** — 夫妻宫缘分模式
-- **当前大限** — 此阶段核心课题
-- **手相互证** — 掌纹与命盘交叉比对（可选）
-
-**[查看完整示例命盘 →](https://github.com/learnwithu/mingli-master/blob/main/assets/musk-mingpan.jpg)**
+[효과 예시](#효과-예시) · [설치](#설치) · [사용](#사용) · [작동 방식](#작동-방식) · [저장소 구조](#저장소-구조)
 
 ---
 
-## 安装
+## 효과 예시
 
-命理解读师基于开放的 [Agent Skills](https://agentskills.io) 协议，可在任何 skills-compatible 的 AI agent runtime 中运行。
+생년월일시를 넣으면 명리 마스터가 자동으로 명반을 계산하고 시각화된 리포트를 만듭니다. 예시는 엘론 머스크 명반입니다.
 
-### 前置依赖
+> **"천기와 태음이 인궁에서 명궁을 이루면 핵심은 머리로 세계를 바꾸려는 사람입니다."**
+>
+> 천기는 전략가의 별이라 늘 다음 수를 생각합니다. 태음은 달의 별이라 내면 감각과 직관이 강합니다. 두 별이 겹치면 계속 생각하고, 계속 가정하고, 기존 틀을 의심하는 사람이 됩니다.
+>
+> 인궁의 천기·태음은 현 상태에 쉽게 만족하지 않습니다. 이미 있는 틀을 조금 고치는 쪽보다, 틀 자체가 맞는지부터 묻는 쪽에 가깝습니다.
 
-命理解读师使用 [iztro-py](https://github.com/spyfree/iztro-py) 进行精确排盘计算，避免 LLM 排盘错误。使用前需要安装：
+각 리포트에는 다음 내용이 들어갑니다.
+
+- **명반 바탕**: 선천 기질과 성격의 중심축
+- **일과 돈**: 관록궁과 재백궁의 구조
+- **관계와 결혼**: 부부궁이 보여주는 관계 패턴
+- **현재 대운**: 지금 10년의 핵심 과제
+- **손금 교차 검증**: 손금 특징과 명반의 일치/충돌 비교(선택)
+
+**[전체 예시 이미지 보기](https://github.com/learnwithu/mingli-master/blob/main/assets/musk-mingpan.jpg)**
+
+---
+
+## 설치
+
+명리 마스터는 Agent Skills 표준을 따릅니다. Claude Code, Codex CLI, Cursor 등 skills 호환 런타임에서 사용할 수 있습니다.
+
+### 필수 의존성
+
+정확한 명반 계산을 위해 [iztro-py](https://github.com/spyfree/iztro-py)를 사용합니다.
 
 ```bash
 python3 -m pip install iztro-py --user --break-system-packages
 ```
 
-### 方式一：一行命令（推荐，跨 runtime）
+### 방법 1: 한 줄 설치
 
-打开你正在用的 agent（Claude Code、Codex、Cursor 等），告诉它：
+사용 중인 에이전트에게 다음처럼 요청합니다.
 
+```text
+이 skill을 설치해줘: https://github.com/learnwithu/mingli-master
 ```
-帮我安装这个 skill：https://github.com/learnwithu/mingli-master
-```
 
-或者用通用 CLI 安装器（[vercel-labs/skills](https://github.com/vercel-labs/skills)）：
+또는 범용 CLI 설치기를 사용할 수 있습니다.
 
 ```bash
 npx skills add learnwithu/mingli-master
 ```
 
-### 方式二：手动安装
+### 방법 2: 수동 설치
 
-| Runtime | 安装路径 |
-|---------|---------|
+| 런타임 | 설치 경로 |
+| --- | --- |
 | Claude Code | `~/.claude/skills/mingli-master/` |
 | Codex CLI | `~/.codex/skills/mingli-master/` |
 | Cursor | `~/.cursor/skills/mingli-master/` |
 
 ```bash
-git clone https://github.com/learnwithu/mingli-master ~/.claude/skills/mingli-master/
+git clone https://github.com/learnwithu/mingli-master ~/.codex/skills/mingli-master/
 ```
 
-### 方式三：作为 Prompt 使用
+### 방법 3: 프롬프트로 사용
 
-即使 runtime 不支持 Agent Skills 自动加载，也可以直接把 `SKILL.md` 的内容粘贴进对话——它本质就是一份 markdown + YAML frontmatter。
+런타임이 Agent Skills 자동 로딩을 지원하지 않아도 `SKILL.md` 내용을 대화에 붙여 넣어 사용할 수 있습니다. 이 저장소의 핵심은 Markdown 지침과 Python 보조 스크립트입니다.
 
 ---
 
-## 使用
+## 사용
 
-装好后，直接用自然语言告诉 agent：
+설치 후 자연어로 요청합니다.
 
+```text
+1991년 8월 15일, 축시, 남성 명반을 봐줘.
+일과 돈 흐름을 중심으로 해석해줘.
+올해 운세에서 조심할 지점을 봐줘.
+손금 사진도 같이 보고 명반과 교차 검증해줘.
 ```
-帮我排个命盘，1991年8月15日，丑时，男
-算算我的事业和财运
-看看我今年的运势
-这是我的掌纹照片，帮我交叉比对一下
+
+직접 스크립트를 실행할 수도 있습니다.
+
+```bash
+python3 scripts/calculate_chart.py --solar 1991-8-15 --hour 1 --gender 남 --output /tmp/chart.json
+python3 scripts/generate_html.py --chart /tmp/chart.json --reading examples/musk_reading.ko.json --output public/index.html
 ```
 
 ---
 
-## 工作原理
+## 작동 방식
 
-输入生辰信息后，命理解读师做四件事：
+입력 이후의 진행 과정은 네 단계입니다.
 
-**1. 精确排盘** — `calculate_chart.py` 调用 iztro-py 精确计算十二宫星曜分布、四化飞星、大限排布。用 Python 而非 LLM 来算数学，确保排盘 100% 准确。
+**1. 정확한 명반 계산**
 
-**2. LLM 解读** — 根据排盘结果，参照十四主星、六吉六煞解读参考和四化飞星规则，生成有温度、有主见、用大白话翻译的解读文字。风格参考 `references/interpretation_guide.md`。
+`calculate_chart.py`가 `iztro-py`를 호출해 12궁, 별 배치, 사화, 대운을 계산합니다. 수학적 계산은 LLM이 아니라 Python이 처리하므로 생년월일시가 바뀌어도 일관된 결과를 냅니다.
 
-**3. 手相互证**（可选） — 如果用户提供了手相照片或文字描述，提取掌纹特征，与命盘交叉比对，标注吻合/矛盾之处。
+**2. 한국어 해석 작성**
 
-**4. HTML 可视化** — 将排盘数据和解读文字填入固定模板，生成暗色星空主题的可视化命盘。
+계산된 JSON을 바탕으로 14주성, 육길·육살, 사화 규칙을 참고해 한국어 해석을 만듭니다. 문체는 `references/interpretation_guide.md`의 기준을 따릅니다.
+
+**3. 손금 교차 검증(선택)**
+
+손금 사진이나 설명이 있으면 생명선, 지능선, 감정선의 특징을 뽑아 명반과 맞는 지점과 어긋나는 지점을 표시합니다.
+
+**4. HTML 시각화**
+
+명반 데이터와 해석 JSON을 `templates/chart_template.html`에 넣어 바로 배포 가능한 정적 HTML을 생성합니다.
 
 ---
 
-## 仓库结构
+## 저장소 구조
 
-```
+```text
 mingli-master/
-├── SKILL.md                          # 命理解读师本体
-├── README.md                         # 本文件
+├── SKILL.md                          # 한국어 Agent Skill 본문
+├── README.md                         # 프로젝트 안내
+├── requirements.txt                  # Python 의존성
+├── examples/
+│   └── musk_reading.ko.json          # 배포 검증용 한국어 해석 예시
 ├── scripts/
-│   ├── calculate_chart.py            # 排盘计算脚本（基于 iztro-py）
-│   └── generate_html.py              # HTML 命盘生成脚本
+│   ├── calculate_chart.py            # 명반 계산 스크립트
+│   └── generate_html.py              # HTML 리포트 생성 스크립트
 ├── templates/
-│   └── chart_template.html           # 命盘 HTML 模板（暗色星空主题）
+│   └── chart_template.html           # 한국어 HTML 템플릿
 ├── references/
-│   ├── interpretation_guide.md       # 解读风格指南
-│   ├── stars_reference.md            # 十四主星 + 六吉六煞参考
-│   └── four_hua_reference.md         # 四化飞星参考
+│   ├── interpretation_guide.md       # 해석 문체 가이드
+│   ├── stars_reference.md            # 14주성, 육길, 육살 참고
+│   └── four_hua_reference.md         # 사화 참고
 └── assets/
-    └── musk-mingpan.jpg               # 示例命盘截图
+    └── musk-mingpan.jpg              # 예시 명반 이미지
 ```
 
 ---
 
-## 为什么不用 LLM 直接算？
+## 왜 LLM이 직접 계산하지 않나?
 
-LLM 排盘会犯错。紫微斗数排盘涉及：
+자미두수 명반 계산은 정확한 규칙 계산입니다.
 
-- 安命宫（根据生月 + 生时）
-- 定五行局（根据命宫地支 + 生年天干）
-- 安十四主星（根据五行局 + 生日）
-- 四化飞星（根据生年天干）
+- 명궁 배치: 생월과 생시에 따라 정해짐
+- 오행국 산정: 명궁 지지와 생년 천간에 따라 정해짐
+- 14주성 배치: 오행국과 생일에 따라 정해짐
+- 사화 배치: 생년 천간에 따라 정해짐
 
-这些全是精确的数学运算。LLM 靠"记忆"来算，换个生辰就可能算错（比如五行局写错、禄权顺序反了）。Python 脚本保证每次排盘 100% 一致且正确。
-
----
-
-## 关于作者
-
-**Bob（李波/波哥）** — AI 企业落地顾问，「与你同学 Learn With You」主理人
-
-| 平台 | 链接 |
-|------|------|
-| 🎵 抖音 | 搜「与你同学 learn with you」（抖音号：learnwithyou） |
-| 📕 小红书 | 搜「与你同学 learn with you」（小红书号：learnwithyou） |
-| ✖️ X (Twitter) | [@learnwithyou_](https://x.com/learnwithyou_) |
-| 📱 视频号 | 搜「与你同学 learnwithyou」 |
-| 💬 公众号 | 微信搜「与你同学 learnwithyou」 |
+LLM이 기억만으로 계산하면 오행국이나 사화 순서를 틀릴 수 있습니다. 이 저장소는 계산을 Python에 맡기고, LLM은 해석과 문장화에 집중하도록 분리합니다.
 
 ---
 
-## 致谢
+## 감사
 
-- [iztro](https://github.com/SylarLong/iztro) — 紫微斗数排盘 JavaScript 库（3648+ stars）
-- [iztro-py](https://github.com/spyfree/iztro-py) — 纯 Python iztro 实现
-
----
-
-## 许可证
-
-MIT — 随便用，随便改。
+- [iztro](https://github.com/SylarLong/iztro): 자미두수 배반 JavaScript 라이브러리
+- [iztro-py](https://github.com/spyfree/iztro-py): 순수 Python iztro 구현
 
 ---
 
-*「算命是对话，不是表演。准确度随沟通趋近。」*
+## 라이선스
+
+MIT
+
+---
+
+*명반은 가능성을 보여주고, 현실은 행동으로 결정됩니다.*
