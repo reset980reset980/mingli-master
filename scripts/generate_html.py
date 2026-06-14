@@ -259,6 +259,7 @@ def generate_html(chart_data, reading_data, template_path):
         '{{READING_CARDS}}': reading_cards,
         '{{HAND_SECTION}}': hand_section,
         '{{CALIBRATION_QUESTIONS}}': calibration,
+        '{{CALIBRATION_ACTION}}': reading_data.get('calibration_action', '#'),
     }
 
     html = template

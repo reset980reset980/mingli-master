@@ -426,6 +426,25 @@
     line-height: 1.7;
   }
   .cal-answer::placeholder { color: rgba(184,170,144,0.55); }
+  .cal-submit {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 20px;
+    border: 0;
+    background: linear-gradient(135deg, var(--gold), #9f7f43);
+    color: #111;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .report-nav {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin: 28px 0 0;
+    color: var(--gold);
+  }
+  .report-nav a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(200,169,110,0.35); }
 
   .footer {
     text-align: center;
@@ -704,8 +723,9 @@
   <div class="calibration">
     <div class="cal-title">보정 질문</div>
     <div class="cal-desc">아래 답변은 해석을 보정하기 위한 추가 근거입니다. 입력한다고 결과가 보장되지는 않으며, 실제 경험과 대화로 판단을 조정합니다.</div>
-    <div class="cal-questions">
-      <div class="cal-q">
+    <form method="post" action="#">
+      <div class="cal-questions">
+        <div class="cal-q">
         <div class="cal-num">하나</div>
         <div class="cal-field">
           <div class="cal-text">현재 하는 일은 기술, 운영, 투자, 창작 중 어디에 가장 가깝나요?<span>관록궁 해석을 보정합니다.</span></div>
@@ -734,7 +754,9 @@
         </div>
       </div>
 
-    </div>
+      </div>
+      <button class="cal-submit" type="submit">답변으로 AI 재분석 저장</button>
+    </form>
   </div>
 
   <div class="footer">
