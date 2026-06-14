@@ -410,41 +410,8 @@
   .cal-questions { display: flex; flex-direction: column; gap: 18px; }
   .cal-q { display: flex; gap: 16px; align-items: flex-start; }
   .cal-num { font-size: 18px; color: rgba(200,169,110,0.3); font-weight: 700; flex-shrink: 0; width: 42px; font-family: 'Gowun Batang', serif; }
-  .cal-field { flex: 1; min-width: 0; }
   .cal-text { font-size: 14px; color: var(--ivory); line-height: 1.8; padding-top: 2px; }
   .cal-text span { font-size: 11px; color: var(--ivory-dim); display: block; margin-top: 4px; }
-  .cal-answer {
-    width: 100%;
-    margin-top: 10px;
-    border: 1px solid rgba(200,169,110,0.18);
-    background: rgba(10,10,15,0.72);
-    color: var(--ivory);
-    padding: 10px 12px;
-    resize: vertical;
-    min-height: 82px;
-    font: inherit;
-    line-height: 1.7;
-  }
-  .cal-answer::placeholder { color: rgba(184,170,144,0.55); }
-  .cal-submit {
-    width: 100%;
-    min-height: 46px;
-    margin-top: 20px;
-    border: 0;
-    background: linear-gradient(135deg, var(--gold), #9f7f43);
-    color: #111;
-    font: inherit;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .report-nav {
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    margin: 28px 0 0;
-    color: var(--gold);
-  }
-  .report-nav a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(200,169,110,0.35); }
 
   .footer {
     text-align: center;
@@ -552,12 +519,9 @@
   <div class="calibration">
     <div class="cal-title">보정 질문</div>
     <div class="cal-desc">아래 답변은 해석을 보정하기 위한 추가 근거입니다. 입력한다고 결과가 보장되지는 않으며, 실제 경험과 대화로 판단을 조정합니다.</div>
-    <form method="post" action="{{CALIBRATION_ACTION}}">
-      <div class="cal-questions">
-        {{CALIBRATION_QUESTIONS}}
-      </div>
-      <button class="cal-submit" type="submit">답변으로 AI 재분석 저장</button>
-    </form>
+    <div class="cal-questions">
+      {{CALIBRATION_QUESTIONS}}
+    </div>
   </div>
 
   <div class="footer">

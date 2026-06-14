@@ -98,36 +98,8 @@ git clone https://github.com/learnwithu/mingli-master ~/.codex/skills/mingli-mas
 
 ```bash
 python3 scripts/calculate_chart.py --solar 1991-8-15 --hour 1 --gender 남 --output /tmp/chart.json
-python3 scripts/generate_html.py --chart /tmp/chart.json --reading examples/musk_reading.ko.json --output public/index.html
+python3 scripts/generate_html.py --chart /tmp/chart.json --reading /tmp/reading.json --output mingpan.html
 ```
-
----
-
-## AI 기능 범위
-
-이 저장소에는 두 가지 사용 방식이 있습니다.
-
-**Agent Skill 방식**에서는 Claude Code, Codex 같은 외부 AI 에이전트가 `chart.json`과 `references/` 문서를 읽고 `reading.json` 해석문을 작성합니다. 이때 AI가 담당하는 일은 명반 계산이 아니라 해석 문장화, 상담식 설명, 보정 질문 작성입니다.
-
-**웹앱 방식**의 [app.py](app.py)는 `Codex CLI`를 비대화 모드로 호출합니다. 생년월일시를 `iztro-py`로 계산한 뒤, 계산된 명반 JSON과 `SKILL.md`, `references/` 문서를 Codex CLI에 전달해 `reading.json`을 생성하고 HTML로 렌더링합니다.
-
-현재 웹앱이 제공하는 기능:
-
-- 양력/음력, 시진, 성별 입력
-- 12궁, 주성, 보조성, 사화, 대운 계산
-- Codex CLI 기반 한국어 명반 해석 생성
-- 한국어 명반 HTML 보고서 저장
-- 보정 질문 답변 제출 후 Codex CLI 재분석
-- 최초 보고서와 보정 보고서 누적 저장
-- 과거 보고서 목록과 개별 보고서 열람
-
-아직 없는 기능:
-
-- 손금 이미지 인식
-- 채팅형 추가 질문 답변
-- 긴 요청의 진행률 표시
-
-보정 질문에 답하면 Codex CLI가 이전 해석과 답변을 함께 참고해 새 보고서를 작성합니다. 다만 결과가 보장되는 것은 아니며, 답변은 해석을 조정하는 추가 근거입니다.
 
 ---
 
@@ -159,9 +131,6 @@ python3 scripts/generate_html.py --chart /tmp/chart.json --reading examples/musk
 mingli-master/
 ├── SKILL.md                          # 한국어 Agent Skill 본문
 ├── README.md                         # 프로젝트 안내
-├── requirements.txt                  # Python 의존성
-├── examples/
-│   └── musk_reading.ko.json          # 배포 검증용 한국어 해석 예시
 ├── scripts/
 │   ├── calculate_chart.py            # 명반 계산 스크립트
 │   └── generate_html.py              # HTML 리포트 생성 스크립트

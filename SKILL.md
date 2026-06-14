@@ -1,5 +1,5 @@
 ---
-name: 명리 마스터
+name: mingli-master
 description: "자미두수 명반 해석: 생년월일시를 받아 정확한 명반을 계산하고 한국어 HTML 해석 리포트를 생성합니다. 자미삼합, 중주파 화기 추적, 손금 교차 검증을 함께 사용합니다. 사용자가 명반, 자미두수, 운세, 사주, 생년월일 분석, 성격/직업/관계 흐름을 물으면 사용합니다."
 ---
 
@@ -217,7 +217,7 @@ python3 scripts/calculate_chart.py --solar 1991-8-15 --hour 1 --gender 남 --out
 # 2. chart.json을 읽고 한국어 reading.json 작성
 
 # 3. HTML 생성
-python3 scripts/generate_html.py --chart /tmp/chart.json --reading examples/musk_reading.ko.json --output public/index.html
+python3 scripts/generate_html.py --chart /tmp/chart.json --reading /tmp/reading.json --output mingpan.html
 
 # 4. 브라우저 또는 정적 서버에서 확인
 ```
